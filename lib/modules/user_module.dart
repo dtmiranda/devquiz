@@ -8,6 +8,6 @@ class UserModule {
   UserModule({
     required this.userName,
     required this.photoUrl,
-    required this.score,
+    this.score = 0,
   });
 }

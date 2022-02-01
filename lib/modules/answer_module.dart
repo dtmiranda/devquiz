@@ -1,8 +1,11 @@
 import 'package:flutter/widgets.dart';
 
 class AnswerModule {
-  final String answertitle;
+  final String answerTitle;
   final bool isRight;
 
-  AnswerModule({required this.answertitle, this.isRight = false});
+  AnswerModule({
+    required this.answerTitle,
+    this.isRight = false,
+  });
 }

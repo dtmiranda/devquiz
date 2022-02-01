@@ -1,6 +1,11 @@
 import 'package:devquiz/modules/question_module.dart';
 
-enum Level { easy, medio, difficult, expert }
+enum Level {
+  easy,
+  medio,
+  difficult,
+  expert,
+}
 
 class QuizModule {
   final String quizTitle;
@@ -11,9 +16,9 @@ class QuizModule {
 
   QuizModule({
     required this.quizTitle,
-    required this.questions,
     this.questionAnswered = 0,
     required this.image,
     required this.level,
+    required this.questions,
   });
 }

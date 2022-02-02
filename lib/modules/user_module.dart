@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'package:devquiz/modules/question_module.dart';
 
 class UserModule {
   final String userName;

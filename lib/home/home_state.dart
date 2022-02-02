@@ -1,1 +1,1 @@
-enum HomeState { success, load, error, empty }
+enum HomeState { success, loading, error, empty }

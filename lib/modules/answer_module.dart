@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/widgets.dart';
 
 class AnswerModule {
-  final String answerTitle;
+  final String? answerTitle;
   final bool isRight;
 
   AnswerModule({
@@ -20,7 +20,7 @@ class AnswerModule {
 
   factory AnswerModule.fromMap(Map<String, dynamic> map) {
     return AnswerModule(
-      answerTitle: map['answerTitle'] ?? '',
+      answerTitle: map['answerTitle'],
       isRight: map['isRight'] ?? false,
     );
   }

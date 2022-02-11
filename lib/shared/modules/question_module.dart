@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:devquiz/modules/answer_module.dart';
+import 'package:devquiz/shared/modules/answer_module.dart';
 
 class QuestionModule {
   final String questionTitle;

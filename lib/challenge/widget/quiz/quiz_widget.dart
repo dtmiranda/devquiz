@@ -2,11 +2,12 @@ import 'dart:ffi';
 
 import 'package:devquiz/challenge/widget/answer/answer_windget.dart';
 import 'package:devquiz/core/core.dart';
+import 'package:devquiz/shared/modules/question_module.dart';
 import 'package:flutter/material.dart';
 
 class QuizWidget extends StatelessWidget {
-  final String quizTitle;
-  const QuizWidget({Key? key, required this.quizTitle}) : super(key: key);
+  final QuestionModule question;
+  const QuizWidget({Key? key, required this.question}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,32 +20,21 @@ class QuizWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              quizTitle,
+              question.questionTitle,
               style: AppTextStyles.heading,
             ),
           ),
           SizedBox(
             height: 24,
           ),
-          AnswerWidget(
-              isRight: true,
-              isSelected: true,
-              answerText:
-                  "Possibilita a criação de aplicativos compilados nativamente."),
-          AnswerWidget(
-              isRight: false,
-              isSelected: true,
-              answerText:
-                  "Possibilita a criação de aplicativos compilados nativamente."),
-          AnswerWidget(
-              answerText:
-                  "Possibilita a criação de aplicativos compilados nativamente."),
-          AnswerWidget(
-              answerText:
-                  "Possibilita a criação de aplicativos compilados nativamente."),
-          AnswerWidget(
-              answerText:
-                  "Possibilita a criação de aplicativos compilados nativamente.")
+          ...question.answers
+              .map(
+                (e) => AnswerWidget(
+                  isRight: e.isRight,
+                  answerText: e.answerTitle,
+                ),
+              )
+              .toList(),
         ],
       ),
     );

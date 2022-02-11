@@ -1,11 +1,17 @@
+import 'package:devquiz/shared/modules/question_module.dart';
+import 'package:flutter/material.dart';
+
 import 'package:devquiz/challenge/widget/next_button/next_button_widget.dart';
 import 'package:devquiz/challenge/widget/question_indicator/question_indicator.dart';
-import 'package:flutter/material.dart';
 
 import 'widget/quiz/quiz_widget.dart';
 
 class ChallengePage extends StatefulWidget {
-  const ChallengePage({Key? key}) : super(key: key);
+  final List<QuestionModule> questions;
+  const ChallengePage({
+    Key? key,
+    required this.questions,
+  }) : super(key: key);
 
   @override
   _ChallengePageState createState() => _ChallengePageState();
@@ -35,7 +41,7 @@ class _ChallengePageState extends State<ChallengePage> {
         ),
       ),
       body: QuizWidget(
-        quizTitle: "O que o Flutter faz em sua totalidade?",
+        question: widget.questions[0],
       ),
       bottomNavigationBar: SafeArea(
         bottom: true,

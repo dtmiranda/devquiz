@@ -1,7 +1,7 @@
 import 'package:devquiz/home/home_repository.dart';
 import 'package:devquiz/home/home_state.dart';
-import 'package:devquiz/modules/quiz_module.dart';
-import 'package:devquiz/modules/user_module.dart';
+import 'package:devquiz/shared/modules/quiz_module.dart';
+import 'package:devquiz/shared/modules/user_module.dart';
 import 'package:flutter/widgets.dart';
 
 class HomeController {
@@ -19,6 +19,7 @@ class HomeController {
     homeState = HomeState.loading;
     //await Future.delayed(Duration(seconds: 1));
     user = await repository.getUser();
+
     homeState = HomeState.success;
   }
 
@@ -27,6 +28,7 @@ class HomeController {
     //await Future.delayed(Duration(seconds: 2));
 
     quizzes = await repository.getQuizzes();
+
     homeState = HomeState.success;
   }
 }

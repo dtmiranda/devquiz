@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/widgets.dart';
 
 class AnswerModule {
-  final String? answerTitle;
+  final String answerTitle;
   final bool isRight;
 
   AnswerModule({

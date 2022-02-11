@@ -21,9 +21,9 @@ class UserModule {
 
   factory UserModule.fromMap(Map<String, dynamic> map) {
     return UserModule(
-      userName: map['userName'] ?? '',
-      photoUrl: map['photoUrl'] ?? '',
-      score: map['score']?.toInt() ?? 0,
+      userName: map['userName'],
+      photoUrl: map['photoUrl'],
+      score: map['score'].toInt(),
     );
   }
 

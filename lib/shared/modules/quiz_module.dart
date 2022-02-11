@@ -10,7 +10,7 @@ enum Level {
 }
 
 extension LevelStringExtention on String {
-  Level get levelParce => {
+  Level get levelParse => {
         "easy": Level.easy,
         "mediun": Level.medium,
         "difficult": Level.difficult,
@@ -19,7 +19,7 @@ extension LevelStringExtention on String {
 }
 
 extension LevelExtention on Level {
-  String get parce => {
+  String get parse => {
         Level.easy: "easy",
         Level.medium: "medium",
         Level.difficult: "difficult",
@@ -36,10 +36,10 @@ class QuizModule {
 
   QuizModule({
     required this.quizTitle,
+    required this.questions,
     this.questionAnswered = 0,
     required this.image,
     required this.level,
-    required this.questions,
   });
 
   Map<String, dynamic> toMap() {
@@ -48,18 +48,18 @@ class QuizModule {
       'questions': questions.map((x) => x.toMap()).toList(),
       'questionAnswered': questionAnswered,
       'image': image,
-      'level': level.parce,
+      'level': level.parse,
     };
   }
 
   factory QuizModule.fromMap(Map<String, dynamic> map) {
     return QuizModule(
-      quizTitle: map['quizTitle'] ?? '',
+      quizTitle: map['quizTitle'],
       questions: List<QuestionModule>.from(
           map['questions']?.map((x) => QuestionModule.fromMap(x))),
-      questionAnswered: map['questionAnswered']?.toInt() ?? 0,
-      image: map['image'] ?? '',
-      level: map['level'].toString().levelParce,
+      questionAnswered: map['questionAnswered'],
+      image: map['image'],
+      level: map['level'].toString().levelParse,
     );
   }
 

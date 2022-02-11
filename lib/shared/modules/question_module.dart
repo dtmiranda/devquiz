@@ -20,7 +20,7 @@ class QuestionModule {
 
   factory QuestionModule.fromMap(Map<String, dynamic> map) {
     return QuestionModule(
-      questionTitle: map['questionTitle'] ?? '',
+      questionTitle: map['questionTitle'],
       answers: List<AnswerModule>.from(
           map['answers']?.map((x) => AnswerModule.fromMap(x))),
     );

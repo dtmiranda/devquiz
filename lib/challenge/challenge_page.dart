@@ -1,17 +1,20 @@
-import 'package:devquiz/result/result_page.dart';
-import 'package:devquiz/shared/modules/question_module.dart';
 import 'package:flutter/material.dart';
+
 import 'package:devquiz/challenge/challenge_controller.dart';
 import 'package:devquiz/challenge/widget/next_button/next_button_widget.dart';
 import 'package:devquiz/challenge/widget/question_indicator/question_indicator.dart';
+import 'package:devquiz/result/result_page.dart';
+import 'package:devquiz/shared/modules/question_module.dart';
 
 import 'widget/quiz/quiz_widget.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModule> questions;
+  final String title;
   const ChallengePage({
     Key? key,
     required this.questions,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -41,6 +44,13 @@ class _ChallengePageState extends State<ChallengePage> {
         duration: Duration(milliseconds: 100),
         curve: Curves.linear,
       );
+  }
+
+  void onSelected(bool value) {
+    if (value) {
+      controller.numRightAnswer++;
+    }
+    nextPage();
   }
 
   @override
@@ -80,7 +90,7 @@ class _ChallengePageState extends State<ChallengePage> {
             .map(
               (e) => QuizWidget(
                 question: e,
-                onChange: nextPage,
+                onSelected: onSelected,
               ),
             )
             .toList(),
@@ -108,7 +118,11 @@ class _ChallengePageState extends State<ChallengePage> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ResultPage(),
+                            builder: (context) => ResultPage(
+                              result: controller.numRightAnswer,
+                              title: widget.title,
+                              lenght: widget.questions.length,
+                            ),
                           ),
                         );
                       },

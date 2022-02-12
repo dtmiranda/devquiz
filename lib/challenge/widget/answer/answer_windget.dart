@@ -5,9 +5,9 @@ import 'package:devquiz/shared/modules/answer_module.dart';
 
 class AnswerWidget extends StatelessWidget {
   final AnswerModule answer;
-  final VoidCallback onTap;
   final bool isSelected;
   final bool isDisabled;
+  final ValueChanged<bool> onTap;
 
   const AnswerWidget({
     Key? key,
@@ -41,7 +41,9 @@ class AnswerWidget extends StatelessWidget {
       child: IgnorePointer(
         ignoring: isDisabled,
         child: GestureDetector(
-          onTap: onTap,
+          onTap: () {
+            onTap(answer.isRight);
+          },
           child: Container(
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(

@@ -38,8 +38,12 @@ class _QuizWidgetState extends State<QuizWidget> {
           ),
           for (var i = 0; i < widget.question.answers.length; i++)
             AnswerWidget(
-              isRight: answer(i).isRight,
-              answerText: answer(i).answerTitle,
+              answer: answer(i),
+              isSelected: indexSelected == i,
+              onTap: () {
+                indexSelected = i;
+                setState(() {});
+              },
             )
         ],
       ),

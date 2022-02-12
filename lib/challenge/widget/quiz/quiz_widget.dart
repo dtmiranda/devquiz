@@ -1,14 +1,20 @@
 import 'dart:ffi';
 
+import 'package:flutter/material.dart';
+
 import 'package:devquiz/challenge/widget/answer/answer_windget.dart';
 import 'package:devquiz/core/core.dart';
 import 'package:devquiz/shared/modules/answer_module.dart';
 import 'package:devquiz/shared/modules/question_module.dart';
-import 'package:flutter/material.dart';
 
 class QuizWidget extends StatefulWidget {
   final QuestionModule question;
-  const QuizWidget({Key? key, required this.question}) : super(key: key);
+  final VoidCallback onChange;
+  const QuizWidget({
+    Key? key,
+    required this.question,
+    required this.onChange,
+  }) : super(key: key);
 
   @override
   State<QuizWidget> createState() => _QuizWidgetState();
@@ -39,10 +45,14 @@ class _QuizWidgetState extends State<QuizWidget> {
           for (var i = 0; i < widget.question.answers.length; i++)
             AnswerWidget(
               answer: answer(i),
+              isDisabled: indexSelected != -1,
               isSelected: indexSelected == i,
               onTap: () {
                 indexSelected = i;
+                //widget.onChange();
                 setState(() {});
+                Future.delayed(Duration(seconds: 1))
+                    .then((value) => widget.onChange());
               },
             )
         ],

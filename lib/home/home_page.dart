@@ -1,5 +1,4 @@
 import 'package:devquiz/challenge/challenge_page.dart';
-import 'package:devquiz/challenge/widget/quiz/quiz_widget.dart';
 import 'package:devquiz/core/core.dart';
 import 'package:devquiz/home/home_controller.dart';
 import 'package:devquiz/home/home_state.dart';

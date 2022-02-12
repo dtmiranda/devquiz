@@ -1,3 +1,4 @@
+import 'package:devquiz/result/result_page.dart';
 import 'package:devquiz/shared/modules/question_module.dart';
 import 'package:flutter/material.dart';
 import 'package:devquiz/challenge/challenge_controller.dart';
@@ -101,12 +102,18 @@ class _ChallengePageState extends State<ChallengePage> {
                   )),
                 if (value == widget.questions.length)
                   Expanded(
-                      child: NextButtonWidget.green(
-                    label: "Confirmar",
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                  )),
+                    child: NextButtonWidget.green(
+                      label: "Confirmar",
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ResultPage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
               ],
             ),
           ),
